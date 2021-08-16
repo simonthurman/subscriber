@@ -27,9 +27,9 @@ namespace subscriber
             {
                 // Disable the auto disconnect and reconnect because the sample would like the client to stay online even no data comes in
                 client.ReconnectTimeout = null;
-                //client.MessageReceived.Subscribe(msg => Console.WriteLine($"Message received: {msg}"));
 
-                client.MessageReceived.Subscribe(msg => funkyClient.GetAsync("https://processfunky.azurewebsites.net/api/process?code=JVhW7xZC6ju81y4ZfCZS3D2V8lfnuAzu2RbkaCYPzXbuUat1xgPvKw=="));
+                client.MessageReceived.Subscribe(msg => funkyClient.GetAsync($"https://processfunky.azurewebsites.net/api/process?code=JVhW7xZC6ju81y4ZfCZS3D2V8lfnuAzu2RbkaCYPzXbuUat1xgPvKw==&name={msg}"));
+
                 await client.Start();
                 Console.WriteLine("Connected.");
                 Console.Read();
